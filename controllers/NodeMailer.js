@@ -30,7 +30,7 @@ const sendmail = async(req,res) => {
       async function main() {
         // send mail with defined transport object
         const info = await transporter.sendMail({
-          from: '"My-ItJobs "', // sender address
+          from: 'My-ItJobs', // sender address
           to: email, // list of receivers
           subject: name, // Subject line
           text: "Hello world?", // plain text body
