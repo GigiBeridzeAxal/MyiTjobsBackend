@@ -11,6 +11,22 @@ const GetJobs = async(req,res) => {
 
      
 }
+
+const GetUserByJob = async(req,res) => {
+
+    const {id} = req.body
+    if(!id) {
+        res.json("Id Not Found")
+    }else{
+    const get = await DB.find({_id:id})
+    res.json(get)
+
+    }
+
+
+
+}
+
 const PostJobs = async(req,res) => {
    
     const {JobSelection , JobSkill   , Company , by , joblocat , salary } = req.body
@@ -18,6 +34,9 @@ const PostJobs = async(req,res) => {
     if(!JobSelection || !Company || !JobSkill || !by || !joblocat   ){
         res.json("All Fields Are Mandatory")
     }else{
+
+
+
         const SendData = await DB.create({
             JobSelection,
 
@@ -43,4 +62,4 @@ const PostJobs = async(req,res) => {
      
 }
 
-module.exports = {GetJobs , PostJobs}
+module.exports = {GetJobs , PostJobs , GetUserByJob}
